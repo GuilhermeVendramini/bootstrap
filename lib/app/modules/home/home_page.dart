@@ -1,4 +1,4 @@
-import 'package:bootstrap/app/shared/utils/i18n/default.i18n.dart';
+import 'package:bootstrap/app/shared/utils/i18n/i18n_default.dart';
 import 'package:bootstrap/app/shared/utils/i18n/locations/en-US.dart';
 import 'package:flutter/material.dart';
 

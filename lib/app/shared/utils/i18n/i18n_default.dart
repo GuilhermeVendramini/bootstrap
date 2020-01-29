@@ -2,11 +2,15 @@ import 'package:bootstrap/app/shared/utils/i18n/locations/en-US.dart' as enUS;
 import 'package:bootstrap/app/shared/utils/i18n/locations/pt-BR.dart' as ptBR;
 import 'package:i18n_extension/i18n_extension.dart';
 
+
+final ptBrString = ptBR.Strings();
+
 extension Localization on String {
+
   static var t = Translations("en_us") +
       {
         "en_us": enUS.Strings.home,
-        "pt_br": ptBR.Strings.home,
+        "pt_br": ptBrString.home,
       } +
       {
         "en_us": enUS.Strings.valIsNotEmpty,
