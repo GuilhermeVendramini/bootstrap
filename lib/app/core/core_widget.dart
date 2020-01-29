@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-class AppWidget extends StatelessWidget {
+class CoreWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
