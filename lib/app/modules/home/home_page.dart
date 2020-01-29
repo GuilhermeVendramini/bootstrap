@@ -1,8 +1,10 @@
+import 'package:bootstrap/app/shared/utils/i18n/default.i18n.dart';
+import 'package:bootstrap/app/shared/utils/i18n/locations/en-US.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  final String title;
-  const HomePage({Key key, this.title = "Home"}) : super(key: key);
+
+  const HomePage({Key key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -13,7 +15,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(Strings.home .i18n),
+        centerTitle: true,
       ),
       body: Column(
         children: <Widget>[],
