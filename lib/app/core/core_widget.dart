@@ -1,3 +1,4 @@
+import 'package:bootstrap/app/core/themes/core_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -6,9 +7,7 @@ class CoreWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Slidy',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: CoreTheme.themeData,
       initialRoute: '/',
       onGenerateRoute: Modular.generateRoute,
     );
