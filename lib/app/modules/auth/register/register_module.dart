@@ -10,7 +10,7 @@ class RegisterModule extends ChildModule {
 
   @override
   List<Router> get routers => [
-        Router('/', child: (_, args) => RegisterPage()),
+        Router('/register', child: (_, args) => RegisterPage()),
       ];
 
   static Inject get to => Inject<RegisterModule>.of();

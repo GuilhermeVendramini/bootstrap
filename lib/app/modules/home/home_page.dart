@@ -1,5 +1,4 @@
-import 'package:bootstrap/app/shared/utils/i18n/i18n_default.dart';
-import 'package:bootstrap/app/shared/utils/i18n/locations/en-US.dart';
+import 'package:bootstrap/app/shared/utils/i18n/i18n_config.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,7 +14,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(Strings.home .i18n),
+        title: Text(i18nDefault.home .i18n),
         centerTitle: true,
       ),
       body: Column(

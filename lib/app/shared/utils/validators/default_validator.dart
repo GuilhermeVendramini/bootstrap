@@ -1,12 +1,11 @@
-import 'package:bootstrap/app/shared/utils/i18n/locations/en-US.dart';
-import 'package:bootstrap/app/shared/utils/i18n/i18n_default.dart';
+import 'package:bootstrap/app/shared/utils/i18n/i18n_config.dart';
 
 class DefaultValidator {
   DefaultValidator._();
 
   static String isNotEmpty(String value) {
     if (value.isEmpty) {
-      return Strings.valIsNotEmpty .i18n;
+      return i18nDefault.valIsNotEmpty .i18n;
     }
 
     return null;
@@ -20,7 +19,7 @@ class DefaultValidator {
     }
 
     if (value.contains("@") == false) {
-      return Strings.valEmail .i18n;
+      return i18nDefault.valEmail .i18n;
     }
 
     return null;
@@ -34,7 +33,7 @@ class DefaultValidator {
     }
 
     if (value.length < 8) {
-      return Strings.valMinLength .i18n;
+      return i18nDefault.valMinLength .i18n;
     }
 
     return null;
@@ -48,7 +47,7 @@ class DefaultValidator {
     }
 
     if (value != firstValue) {
-      return Strings.valPasswordNotConfirm .i18n;
+      return i18nDefault.valPasswordNotConfirm .i18n;
     }
 
     return null;
