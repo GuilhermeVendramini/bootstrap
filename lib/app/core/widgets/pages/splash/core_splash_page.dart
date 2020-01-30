@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-class SplashPage extends StatefulWidget {
+class CoreSplashPage extends StatefulWidget {
   @override
-  _SplashPageState createState() => _SplashPageState();
+  _CoreSplashPageState createState() => _CoreSplashPageState();
 }
 
-class _SplashPageState extends State<SplashPage> {
+class _CoreSplashPageState extends State<CoreSplashPage> {
   CoreController _coreController;
 
   @override
