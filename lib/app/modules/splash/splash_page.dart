@@ -1,5 +1,4 @@
 import 'package:bootstrap/app/core/core_controller.dart';
-import 'package:bootstrap/app/modules/splash/splash_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -9,7 +8,7 @@ class SplashPage extends StatefulWidget {
   _SplashPageState createState() => _SplashPageState();
 }
 
-class _SplashPageState extends ModularState<SplashPage, SplashController> {
+class _SplashPageState extends State<SplashPage> {
   CoreController _coreController;
 
   @override
