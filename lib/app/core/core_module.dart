@@ -1,8 +1,10 @@
 import 'package:bootstrap/app/core/core_controller.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter/material.dart';
 import 'package:bootstrap/app/core/core_widget.dart';
+import 'package:bootstrap/app/modules/auth/login/login_module.dart';
 import 'package:bootstrap/app/modules/home/home_module.dart';
+import 'package:bootstrap/app/modules/splash/splash_module.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class CoreModule extends MainModule {
   @override
@@ -12,7 +14,9 @@ class CoreModule extends MainModule {
 
   @override
   List<Router> get routers => [
-        Router('/', module: HomeModule()),
+        Router('/', module: SplashModule()),
+        Router('/home', module: HomeModule()),
+        Router('/login', module: LoginModule()),
       ];
 
   @override

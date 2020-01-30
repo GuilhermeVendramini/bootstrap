@@ -20,6 +20,7 @@ class CoreWidget extends StatelessWidget {
       theme: CoreTheme.themeData,
       initialRoute: '/',
       onGenerateRoute: Modular.generateRoute,
+      navigatorKey: Modular.navigatorKey,
     );
   }
 }

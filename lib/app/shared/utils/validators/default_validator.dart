@@ -5,7 +5,7 @@ class DefaultValidator {
 
   static String isNotEmpty(String value) {
     if (value.isEmpty) {
-      return i18nDefault.valIsNotEmpty .i18n;
+      return i18nDefault.valIsNotEmpty.i18n;
     }
 
     return null;
@@ -19,7 +19,7 @@ class DefaultValidator {
     }
 
     if (value.contains("@") == false) {
-      return i18nDefault.valEmail .i18n;
+      return i18nDefault.valEmail.i18n;
     }
 
     return null;
@@ -33,7 +33,7 @@ class DefaultValidator {
     }
 
     if (value.length < 8) {
-      return i18nDefault.valMinLength .i18n;
+      return i18nDefault.valMinLength.i18n;
     }
 
     return null;
@@ -47,7 +47,7 @@ class DefaultValidator {
     }
 
     if (value != firstValue) {
-      return i18nDefault.valPasswordNotConfirm .i18n;
+      return i18nDefault.valPasswordNotConfirm.i18n;
     }
 
     return null;

@@ -1,19 +1,12 @@
+import 'package:bootstrap/app/shared/utils/i18n/i18n_config.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
-  final String title;
-  const LoginPage({Key key, this.title = "Login"}) : super(key: key);
-
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
+class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(i18nDefault.login),
       ),
       body: Column(
         children: <Widget>[],

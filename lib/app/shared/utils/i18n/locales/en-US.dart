@@ -6,4 +6,6 @@ class I18nStrings implements I18nTranslate {
   String valIsNotEmpty = 'Can\'t be empty';
   String valMinLength = 'Can\'t be less than 8 characters';
   String valPasswordNotConfirm = 'Password don\'t match';
+  String login = 'Login';
+  String register = 'Register';
 }

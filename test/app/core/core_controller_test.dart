@@ -18,9 +18,7 @@ void main() {
     });
 
     test("Set Value", () {
-      expect(coreController.value, equals(0));
-      coreController.increment();
-      expect(coreController.value, equals(1));
+      expect(coreController.user, equals(null));
     });
   });
 }
