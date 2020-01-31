@@ -1,6 +1,7 @@
 import 'package:bootstrap/app/modules/auth/login/login_controller.dart';
 import 'package:bootstrap/app/modules/auth/login/login_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:i18n_extension/i18n_widget.dart';
 
 class LoginModule extends ChildModule {
   @override
@@ -10,7 +11,12 @@ class LoginModule extends ChildModule {
 
   @override
   List<Router> get routers => [
-        Router('/login', child: (_, args) => LoginPage()),
+        Router(
+          '/login',
+          child: (_, args) => I18n(
+            child: LoginPage(),
+          ),
+        ),
       ];
 
   static Inject get to => Inject<LoginModule>.of();
