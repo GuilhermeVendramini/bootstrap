@@ -17,4 +17,10 @@ abstract class I18nTranslate {
   String valMinLength;
   String valPasswordNotConfirm;
   String valEmail;
+
+/*
+  * Login
+  * */
+  String loginForgotPassword;
+  String loginSignUp;
 }

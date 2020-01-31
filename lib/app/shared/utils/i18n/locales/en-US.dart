@@ -11,4 +11,6 @@ class I18nStrings implements I18nTranslate {
   String register = 'Register';
   String email = 'Email';
   String password = 'Password';
+  String loginForgotPassword = 'Forgot your password?';
+  String loginSignUp = 'Sign Up';
 }
