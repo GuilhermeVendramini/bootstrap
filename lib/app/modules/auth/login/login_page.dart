@@ -1,3 +1,4 @@
+import 'package:bootstrap/app/modules/auth/login/widgets/blocks/login_block.dart';
 import 'package:bootstrap/app/shared/utils/i18n/i18n_config.dart';
 import 'package:flutter/material.dart';
 
@@ -8,8 +9,10 @@ class LoginPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(i18nDefault.login.i18n),
       ),
-      body: Column(
-        children: <Widget>[],
+      body: Center(
+        child: SingleChildScrollView(
+          child: LoginBlock(),
+        ),
       ),
     );
   }

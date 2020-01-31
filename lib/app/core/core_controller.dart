@@ -21,7 +21,7 @@ abstract class _CoreBase with Store {
       try {
         userLoadStatus = UserLoadStatus.LOADING;
         await Future.delayed(Duration(seconds: 3)).then((value) {
-          user = UserModel(name: 'Guilherme');
+          //user = UserModel(name: 'Guilherme');
           userLoadStatus = UserLoadStatus.DONE;
         });
         return true;

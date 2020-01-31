@@ -4,4 +4,6 @@ part 'login_controller.g.dart';
 
 class LoginController = _LoginBase with _$LoginController;
 
-abstract class _LoginBase with Store {}
+abstract class _LoginBase with Store {
+  var formKey;
+}

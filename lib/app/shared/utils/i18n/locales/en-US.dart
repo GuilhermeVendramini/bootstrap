@@ -9,4 +9,6 @@ class I18nStrings implements I18nTranslate {
   String valPasswordNotConfirm = 'Password don\'t match';
   String login = 'Login';
   String register = 'Register';
+  String email = 'Email';
+  String password = 'Password';
 }

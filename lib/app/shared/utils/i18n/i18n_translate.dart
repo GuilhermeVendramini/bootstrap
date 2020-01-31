@@ -6,6 +6,8 @@ abstract class I18nTranslate {
   String home;
   String login;
   String register;
+  String email;
+  String password;
 
   /*
   * Validators

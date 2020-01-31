@@ -11,7 +11,7 @@ void main() {
     register = RegisterModule.to.get<RegisterController>();
   });
 
-  group('RegisterController', () {
+  group('[GROUP]: RegisterController', () {
     test("isInstanceOf RegisterController", () {
       expect(register, isInstanceOf<RegisterController>());
     });

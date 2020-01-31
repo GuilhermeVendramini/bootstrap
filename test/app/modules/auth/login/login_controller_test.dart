@@ -11,7 +11,7 @@ void main() {
     login = LoginModule.to.get<LoginController>();
   });
 
-  group('LoginController Test', () {
+  group('[GROUP]: LoginController Test', () {
     test("isInstanceOf LoginController", () {
       expect(login, isInstanceOf<LoginController>());
     });

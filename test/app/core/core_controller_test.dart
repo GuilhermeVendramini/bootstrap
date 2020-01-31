@@ -12,7 +12,7 @@ void main() {
     coreController = CoreModule.to.get<CoreController>();
   });
 
-  group('CoreController', () {
+  group('[GROUP]: CoreController', () {
     test("isInstanceOf CoreController", () {
       expect(coreController, isInstanceOf<CoreController>());
     });

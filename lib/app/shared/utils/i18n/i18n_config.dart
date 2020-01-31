@@ -32,6 +32,22 @@ extension Localization on String {
       {
         "en_us": _i18nEnUS.valEmail,
         "pt_br": _i18nPtBR.valEmail,
+      } +
+      {
+        "en_us": _i18nEnUS.login,
+        "pt_br": _i18nPtBR.login,
+      } +
+      {
+        "en_us": _i18nEnUS.register,
+        "pt_br": _i18nPtBR.register,
+      } +
+      {
+        "en_us": _i18nEnUS.email,
+        "pt_br": _i18nPtBR.email,
+      } +
+      {
+        "en_us": _i18nEnUS.password,
+        "pt_br": _i18nPtBR.password,
       };
 
   String get i18n => localize(this, t);
