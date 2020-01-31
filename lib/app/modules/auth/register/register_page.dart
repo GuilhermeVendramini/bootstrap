@@ -1,3 +1,4 @@
+import 'package:bootstrap/app/modules/auth/register/widgets/blocks/register_block.dart';
 import 'package:bootstrap/app/shared/utils/i18n/i18n_config.dart';
 import 'package:flutter/material.dart';
 
@@ -8,8 +9,10 @@ class RegisterPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(i18nDefault.register.i18n),
       ),
-      body: Column(
-        children: <Widget>[],
+      body: Center(
+        child: SingleChildScrollView(
+          child: RegisterBlock(),
+        ),
       ),
     );
   }

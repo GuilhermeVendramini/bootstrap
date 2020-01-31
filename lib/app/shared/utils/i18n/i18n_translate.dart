@@ -8,6 +8,7 @@ abstract class I18nTranslate {
   String register;
   String email;
   String password;
+  String name;
 
   /*
   * Validators
@@ -18,9 +19,15 @@ abstract class I18nTranslate {
   String valPasswordNotConfirm;
   String valEmail;
 
-/*
+  /*
   * Login
   * */
   String loginForgotPassword;
   String loginSignUp;
+
+  /*
+  * Register
+  * */
+  String registerConfirmPassword;
+  String registerNewAccount;
 }
