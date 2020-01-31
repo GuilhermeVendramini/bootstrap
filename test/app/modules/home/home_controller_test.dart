@@ -1,8 +1,7 @@
-import 'package:flutter_modular/flutter_modular_test.dart';
-import 'package:flutter_test/flutter_test.dart';
-
 import 'package:bootstrap/app/modules/home/home_controller.dart';
 import 'package:bootstrap/app/modules/home/home_module.dart';
+import 'package:flutter_modular/flutter_modular_test.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   initModule(HomeModule());
@@ -12,15 +11,9 @@ void main() {
     home = HomeModule.to.get<HomeController>();
   });
 
-  group('HomeController Test', () {
-    test("First Test", () {
+  group('HomeController', () {
+    test("isInstanceOf HomeController", () {
       expect(home, isInstanceOf<HomeController>());
-    });
-
-    test("Set Value", () {
-      expect(home.value, equals(0));
-      home.increment();
-      expect(home.value, equals(1));
     });
   });
 }

@@ -10,6 +10,10 @@ final I18nTranslate i18nDefault = _i18nEnUS;
 extension Localization on String {
   static var t = Translations("en_us") +
       {
+        "en_us": _i18nEnUS.appName,
+        "pt_br": _i18nPtBR.appName,
+      } +
+      {
         "en_us": _i18nEnUS.home,
         "pt_br": _i18nPtBR.home,
       } +

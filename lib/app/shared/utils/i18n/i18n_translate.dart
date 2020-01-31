@@ -2,7 +2,7 @@ abstract class I18nTranslate {
   /*
   * Generic
   * */
-
+  String appName;
   String home;
   String login;
   String register;

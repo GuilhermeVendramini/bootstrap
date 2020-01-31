@@ -1,8 +1,8 @@
-import 'package:flutter_modular/flutter_modular_test.dart';
-import 'package:flutter_test/flutter_test.dart';
-
 import 'package:bootstrap/app/core/core_controller.dart';
 import 'package:bootstrap/app/core/core_module.dart';
+import 'package:bootstrap/app/shared/models/user_model.dart';
+import 'package:flutter_modular/flutter_modular_test.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   initModule(CoreModule());
@@ -12,13 +12,14 @@ void main() {
     coreController = CoreModule.to.get<CoreController>();
   });
 
-  group('AppController Test', () {
-    test("First Test", () {
+  group('CoreController', () {
+    test("isInstanceOf CoreController", () {
       expect(coreController, isInstanceOf<CoreController>());
     });
 
-    test("Set Value", () {
-      expect(coreController.user, equals(null));
+    test("loadCurrentUser()", () async {
+      expect(await coreController.loadCurrentUser(), equals(true));
+      expect(coreController.user, isInstanceOf<UserModel>());
     });
   });
 }

@@ -1,4 +1,5 @@
 import 'package:bootstrap/app/core/core_controller.dart';
+import 'package:bootstrap/app/shared/utils/i18n/i18n_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -28,7 +29,7 @@ class _CoreSplashPageState extends State<CoreSplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter Boostrap'),
+        title: Text(i18nDefault.appName.i18n),
       ),
       body: Center(
         child: Observer(
@@ -43,7 +44,7 @@ class _CoreSplashPageState extends State<CoreSplashPage> {
               case UserLoadStatus.DONE:
               case UserLoadStatus.IDLE:
               default:
-                return Text('Flutter Boostrap');
+                return Text(i18nDefault.appName.i18n);
                 break;
             }
           },

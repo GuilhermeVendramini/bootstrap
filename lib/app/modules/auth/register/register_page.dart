@@ -6,7 +6,7 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(i18nDefault.register),
+        title: Text(i18nDefault.register.i18n),
       ),
       body: Column(
         children: <Widget>[],
