@@ -1,4 +1,4 @@
-package com.example.bootstrap
+package vendramini.bootstrap
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
