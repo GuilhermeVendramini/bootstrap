@@ -16,7 +16,7 @@ class _CoreSplashPageState extends State<CoreSplashPage> {
   void initState() {
     _coreController = Modular.get<CoreController>();
     _coreController.loadCurrentUser().then((result) {
-      if (result && _coreController.user != null) {
+      if (result && _coreController.currentUser != null) {
         Modular.to.pushReplacementNamed('/home');
       } else {
         Modular.to.pushReplacementNamed('/login');

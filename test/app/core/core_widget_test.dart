@@ -30,7 +30,7 @@ void main() {
       expect(titleFinder, findsNWidgets(2));
       await tester.pump();
 
-      if (coreController.user != null) {
+      if (coreController.currentUser != null) {
         titleFinder = find.text(i18nDefault.home.i18n);
       } else {
         titleFinder = find.text(i18nDefault.login.i18n);

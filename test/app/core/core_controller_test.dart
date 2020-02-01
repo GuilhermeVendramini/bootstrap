@@ -19,7 +19,7 @@ void main() {
 
     test("loadCurrentUser()", () async {
       expect(await coreController.loadCurrentUser(), equals(true));
-      expect(coreController.user, isInstanceOf<UserModel>());
+      expect(coreController.currentUser, isInstanceOf<UserModel>());
     });
   });
 }

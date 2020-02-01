@@ -9,7 +9,7 @@ class CoreController = _CoreBase with _$CoreController;
 
 abstract class _CoreBase with Store {
   @observable
-  UserModel user;
+  UserModel currentUser;
 
   @observable
   UserLoadStatus userLoadStatus = UserLoadStatus.IDLE;
@@ -17,10 +17,11 @@ abstract class _CoreBase with Store {
   @action
   Future<bool> loadCurrentUser() async {
     print('loadCurrentUser');
-    if (user == null) {
+    if (currentUser == null) {
       try {
         userLoadStatus = UserLoadStatus.LOADING;
         await Future.delayed(Duration(seconds: 3)).then((value) {
+          // Here will get user from shared preferences
           //user = UserModel(name: 'Guilherme');
           userLoadStatus = UserLoadStatus.DONE;
         });
