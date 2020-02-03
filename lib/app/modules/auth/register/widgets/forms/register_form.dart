@@ -1,19 +1,36 @@
+import 'package:bootstrap/app/core/core_controller.dart';
 import 'package:bootstrap/app/modules/auth/register/register_controller.dart';
+import 'package:bootstrap/app/shared/models/user_model.dart';
 import 'package:bootstrap/app/shared/utils/i18n/i18n_config.dart';
 import 'package:bootstrap/app/shared/utils/validators/default_validator.dart';
 import 'package:bootstrap/app/shared/widgets/buttons/default_raised_button.dart';
 import 'package:bootstrap/app/shared/widgets/fields/default_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-class RegisterForm extends StatelessWidget {
+class RegisterForm extends StatefulWidget {
+  @override
+  _RegisterFormState createState() => _RegisterFormState();
+}
 
+class _RegisterFormState extends State<RegisterForm> {
   final _formKey = GlobalKey<FormState>();
+  CoreController _coreController;
+  RegisterController _registerController;
+
+  void _formSubmit() async {
+    UserModel user = await _registerController.registerWithEmailPassword();
+    if (user != null) {
+      _coreController.currentUser = user;
+      Modular.to.pushReplacementNamed('/home');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-
-    final _registerController = Modular.get<RegisterController>();
+    _coreController = Modular.get<CoreController>();
+    _registerController = Modular.get<RegisterController>();
     _registerController.formKey = _formKey;
 
     return Form(
@@ -21,43 +38,45 @@ class RegisterForm extends StatelessWidget {
       child: Column(
         children: <Widget>[
           DefaultTextFormField(
-            textInputType: TextInputType.text,
-            hintText: i18nDefault.name.i18n,
-            icon: Icons.person,
-            onSaved: null,
-            validator: DefaultValidator.isNotEmpty,
-          ),
-          DefaultTextFormField(
             textInputType: TextInputType.emailAddress,
             hintText: i18nDefault.email.i18n,
             icon: Icons.email,
-            onSaved: null,
+            onChanged: _registerController.onChangeEmail,
             validator: DefaultValidator.isEmail,
           ),
           DefaultTextFormField(
             obscureText: true,
             hintText: i18nDefault.password.i18n,
             icon: Icons.lock,
-            onSaved: null,
+            onChanged: _registerController.onChangePassword,
             validator: DefaultValidator.password,
           ),
           DefaultTextFormField(
             obscureText: true,
             hintText: i18nDefault.registerConfirmPassword.i18n,
             icon: Icons.lock,
-            onSaved: null,
+            onChanged: _registerController.onChangeConfirmPassword,
             validator: (value) {
               return DefaultValidator.confirmPassword(
-                  value, 'password');
+                  value, _registerController.password);
             },
           ),
           SizedBox(
             height: 10.0,
           ),
-          DefaultRaisedButton(
-            text: i18nDefault.registerNewAccount.i18n,
-            onPressed: (){},
-          ),
+          Observer(builder: (_) {
+            if (_registerController.registerUserStatus ==
+                RegisterUserStatus.LOADING) {
+              return CircularProgressIndicator();
+            } else {
+              return DefaultRaisedButton(
+                text: i18nDefault.registerNewAccount.i18n,
+                onPressed: _registerController.emailPasswordValidated
+                    ? _formSubmit
+                    : null,
+              );
+            }
+          }),
         ],
       ),
     );

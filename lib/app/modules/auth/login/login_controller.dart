@@ -5,7 +5,7 @@ import 'package:mobx/mobx.dart';
 
 part 'login_controller.g.dart';
 
-enum SignUpUserStatus { IDLE, LOADING, DONE, ERROR }
+enum SignInUserStatus { IDLE, LOADING, DONE, ERROR }
 
 class LoginController = _LoginBase with _$LoginController;
 
@@ -15,7 +15,7 @@ abstract class _LoginBase with Store {
   UserModel currentUser;
 
   @observable
-  SignUpUserStatus signUpUserStatus = SignUpUserStatus.IDLE;
+  SignInUserStatus signInUserStatus = SignInUserStatus.IDLE;
 
   @observable
   String email = '';
@@ -44,18 +44,18 @@ abstract class _LoginBase with Store {
     try {
       final _form = formKey.currentState;
       if (_form.validate()) {
-        signUpUserStatus = SignUpUserStatus.LOADING;
+        signInUserStatus = SignInUserStatus.LOADING;
         _form.save();
-        currentUser = await _userRepository.signUpWithEmailPassword(
+        currentUser = await _userRepository.signInWithEmailPassword(
             email: email, password: password);
-        signUpUserStatus = SignUpUserStatus.DONE;
+        signInUserStatus = SignInUserStatus.DONE;
         if (currentUser != null) {
           return currentUser;
         }
       }
     } catch (e) {
       print(e.toString());
-      signUpUserStatus = SignUpUserStatus.ERROR;
+      signInUserStatus = SignInUserStatus.ERROR;
     }
 
     return null;

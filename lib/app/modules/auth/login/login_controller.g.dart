@@ -16,21 +16,21 @@ mixin _$LoginController on _LoginBase, Store {
           Computed<bool>(() => super.emailPasswordValidated))
       .value;
 
-  final _$signUpUserStatusAtom = Atom(name: '_LoginBase.signUpUserStatus');
+  final _$signInUserStatusAtom = Atom(name: '_LoginBase.signInUserStatus');
 
   @override
-  SignUpUserStatus get signUpUserStatus {
-    _$signUpUserStatusAtom.context.enforceReadPolicy(_$signUpUserStatusAtom);
-    _$signUpUserStatusAtom.reportObserved();
-    return super.signUpUserStatus;
+  SignInUserStatus get signInUserStatus {
+    _$signInUserStatusAtom.context.enforceReadPolicy(_$signInUserStatusAtom);
+    _$signInUserStatusAtom.reportObserved();
+    return super.signInUserStatus;
   }
 
   @override
-  set signUpUserStatus(SignUpUserStatus value) {
-    _$signUpUserStatusAtom.context.conditionallyRunInAction(() {
-      super.signUpUserStatus = value;
-      _$signUpUserStatusAtom.reportChanged();
-    }, _$signUpUserStatusAtom, name: '${_$signUpUserStatusAtom.name}_set');
+  set signInUserStatus(SignInUserStatus value) {
+    _$signInUserStatusAtom.context.conditionallyRunInAction(() {
+      super.signInUserStatus = value;
+      _$signInUserStatusAtom.reportChanged();
+    }, _$signInUserStatusAtom, name: '${_$signInUserStatusAtom.name}_set');
   }
 
   final _$emailAtom = Atom(name: '_LoginBase.email');

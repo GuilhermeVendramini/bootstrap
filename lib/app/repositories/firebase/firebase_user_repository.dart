@@ -5,11 +5,27 @@ import 'package:flutter/foundation.dart';
 class FirebaseUserRepository {
   final _firebaseAuth = FirebaseAuth.instance;
 
-  Future<UserModel> signUpWithEmailPassword({
+  Future<UserModel> signInWithEmailPassword({
     @required String email,
     @required String password,
   }) async {
     AuthResult result = await _firebaseAuth.signInWithEmailAndPassword(
+        email: email, password: password);
+
+    FirebaseUser firebaseUser = result.user;
+
+    if (firebaseUser != null) {
+      return UserModel(name: firebaseUser.displayName);
+    }
+
+    return null;
+  }
+
+  Future<UserModel> createUserWithEmailPassword({
+    @required String email,
+    @required String password,
+  }) async {
+    AuthResult result = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email, password: password);
 
     FirebaseUser firebaseUser = result.user;

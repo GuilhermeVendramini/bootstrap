@@ -55,7 +55,7 @@ class _LoginFormState extends State<LoginForm> {
             height: 10.0,
           ),
           Observer(builder: (_) {
-            if (_loginController.signUpUserStatus == SignUpUserStatus.LOADING) {
+            if (_loginController.signInUserStatus == SignInUserStatus.LOADING) {
               return CircularProgressIndicator();
             } else {
               return DefaultRaisedButton(
