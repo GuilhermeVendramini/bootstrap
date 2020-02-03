@@ -1,4 +1,7 @@
+import 'package:bootstrap/app/repositories/firebase/firebase_user_instance.dart';
 import 'package:bootstrap/app/repositories/firebase/firebase_user_repository.dart';
+import 'package:bootstrap/app/repositories/hive/hive_user_instance.dart';
+import 'package:bootstrap/app/repositories/hive/hive_user_repository.dart';
 import 'package:bootstrap/app/shared/models/user_model.dart';
 import 'package:bootstrap/app/shared/utils/validators/default_validator.dart';
 import 'package:flutter/services.dart';
@@ -12,7 +15,8 @@ class LoginController = _LoginBase with _$LoginController;
 
 abstract class _LoginBase with Store {
   var formKey;
-  FirebaseUserRepository _userRepository = FirebaseUserRepository();
+  FirebaseUserRepository _userRepository = FirebaseUserInstance.repository;
+  HiveUserRepository _hiveUserRepository = HiveUserInstance.repository;
   UserModel currentUser;
 
   @observable
@@ -52,10 +56,13 @@ abstract class _LoginBase with Store {
         _form.save();
         currentUser = await _userRepository.signInWithEmailPassword(
             email: email, password: password);
-        signInUserStatus = SignInUserStatus.DONE;
+
         if (currentUser != null) {
+          _hiveUserRepository.saveCurrentUser(user: currentUser);
           return currentUser;
         }
+
+        signInUserStatus = SignInUserStatus.DONE;
       }
     } on PlatformException catch (e) {
       messageStatus = e.message;

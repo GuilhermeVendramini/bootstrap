@@ -1,3 +1,5 @@
+import 'package:bootstrap/app/repositories/hive/hive_user_instance.dart';
+import 'package:bootstrap/app/repositories/hive/hive_user_repository.dart';
 import 'package:bootstrap/app/shared/models/user_model.dart';
 import 'package:mobx/mobx.dart';
 
@@ -14,17 +16,16 @@ abstract class _CoreBase with Store {
   @observable
   UserLoadStatus userLoadStatus = UserLoadStatus.IDLE;
 
+  HiveUserRepository _hiveUserRepository = HiveUserInstance.repository;
+
   @action
   Future<bool> loadCurrentUser() async {
     print('loadCurrentUser');
     if (currentUser == null) {
       try {
         userLoadStatus = UserLoadStatus.LOADING;
-        await Future.delayed(Duration(seconds: 3)).then((value) {
-          // Here will get user from shared preferences
-          //user = UserModel(name: 'Guilherme');
-          userLoadStatus = UserLoadStatus.DONE;
-        });
+        currentUser = await _hiveUserRepository.getCurrentUser();
+        userLoadStatus = UserLoadStatus.DONE;
         return true;
       } catch (e) {
         userLoadStatus = UserLoadStatus.ERROR;

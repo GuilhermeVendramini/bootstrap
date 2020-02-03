@@ -15,9 +15,13 @@ class FirebaseUserRepository {
     FirebaseUser firebaseUser = result.user;
 
     if (firebaseUser != null) {
-      return UserModel(name: firebaseUser.displayName);
+      IdTokenResult idToken = await firebaseUser.getIdToken();
+      return UserModel(
+        id: idToken.token,
+        name: firebaseUser.displayName,
+        email: firebaseUser.email,
+      );
     }
-
     return null;
   }
 
@@ -31,7 +35,12 @@ class FirebaseUserRepository {
     FirebaseUser firebaseUser = result.user;
 
     if (firebaseUser != null) {
-      return UserModel(name: firebaseUser.displayName);
+      IdTokenResult idToken = await firebaseUser.getIdToken();
+      return UserModel(
+        id: idToken.token,
+        name: firebaseUser.displayName,
+        email: firebaseUser.email,
+      );
     }
 
     return null;

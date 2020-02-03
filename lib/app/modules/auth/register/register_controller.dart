@@ -1,3 +1,4 @@
+import 'package:bootstrap/app/repositories/firebase/firebase_user_instance.dart';
 import 'package:bootstrap/app/repositories/firebase/firebase_user_repository.dart';
 import 'package:bootstrap/app/shared/models/user_model.dart';
 import 'package:bootstrap/app/shared/utils/validators/default_validator.dart';
@@ -13,7 +14,7 @@ class RegisterController = _RegisterBase with _$RegisterController;
 abstract class _RegisterBase with Store {
   var formKey;
 
-  FirebaseUserRepository _userRepository = FirebaseUserRepository();
+  FirebaseUserRepository _userRepository = FirebaseUserInstance.repository;
   UserModel currentUser;
 
   @observable
