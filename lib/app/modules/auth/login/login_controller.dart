@@ -1,6 +1,7 @@
 import 'package:bootstrap/app/repositories/firebase/firebase_user_repository.dart';
 import 'package:bootstrap/app/shared/models/user_model.dart';
 import 'package:bootstrap/app/shared/utils/validators/default_validator.dart';
+import 'package:flutter/services.dart';
 import 'package:mobx/mobx.dart';
 
 part 'login_controller.g.dart';
@@ -22,6 +23,9 @@ abstract class _LoginBase with Store {
 
   @observable
   String password = '';
+
+  @observable
+  String messageStatus = '';
 
   @action
   void onChangeEmail(String value) {
@@ -53,8 +57,8 @@ abstract class _LoginBase with Store {
           return currentUser;
         }
       }
-    } catch (e) {
-      print(e.toString());
+    } on PlatformException catch (e) {
+      messageStatus = e.message;
       signInUserStatus = SignInUserStatus.ERROR;
     }
 

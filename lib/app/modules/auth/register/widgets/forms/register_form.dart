@@ -2,6 +2,7 @@ import 'package:bootstrap/app/core/core_controller.dart';
 import 'package:bootstrap/app/modules/auth/register/register_controller.dart';
 import 'package:bootstrap/app/shared/models/user_model.dart';
 import 'package:bootstrap/app/shared/utils/i18n/i18n_config.dart';
+import 'package:bootstrap/app/shared/utils/snackbar/default_snackbar.dart';
 import 'package:bootstrap/app/shared/utils/validators/default_validator.dart';
 import 'package:bootstrap/app/shared/widgets/buttons/default_raised_button.dart';
 import 'package:bootstrap/app/shared/widgets/fields/default_text_form_field.dart';
@@ -24,6 +25,13 @@ class _RegisterFormState extends State<RegisterForm> {
     if (user != null) {
       _coreController.currentUser = user;
       Modular.to.pushReplacementNamed('/home');
+    } else {
+      if (_registerController.messageStatus.isNotEmpty) {
+        DefaultSnackBar.BuildSnackBar(
+          context: context,
+          content: _registerController.messageStatus,
+        );
+      }
     }
   }
 

@@ -1,6 +1,7 @@
 import 'package:bootstrap/app/repositories/firebase/firebase_user_repository.dart';
 import 'package:bootstrap/app/shared/models/user_model.dart';
 import 'package:bootstrap/app/shared/utils/validators/default_validator.dart';
+import 'package:flutter/services.dart';
 import 'package:mobx/mobx.dart';
 
 part 'register_controller.g.dart';
@@ -27,6 +28,9 @@ abstract class _RegisterBase with Store {
   @observable
   String confirmPassword = '';
 
+  @observable
+  String messageStatus = '';
+
   @action
   void onChangeEmail(String value) {
     email = value.trim();
@@ -46,7 +50,8 @@ abstract class _RegisterBase with Store {
   bool get emailPasswordValidated {
     if (DefaultValidator.isEmail(email) == null &&
         DefaultValidator.password(password) == null &&
-        DefaultValidator.confirmPassword(confirmPassword, password) == null) return true;
+        DefaultValidator.confirmPassword(confirmPassword, password) == null)
+      return true;
     return false;
   }
 
@@ -63,8 +68,8 @@ abstract class _RegisterBase with Store {
           return currentUser;
         }
       }
-    } catch (e) {
-      print(e.toString());
+    } on PlatformException catch (e) {
+      messageStatus = e.message;
       registerUserStatus = RegisterUserStatus.ERROR;
     }
 

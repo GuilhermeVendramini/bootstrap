@@ -67,6 +67,23 @@ mixin _$LoginController on _LoginBase, Store {
     }, _$passwordAtom, name: '${_$passwordAtom.name}_set');
   }
 
+  final _$messageStatusAtom = Atom(name: '_LoginBase.messageStatus');
+
+  @override
+  String get messageStatus {
+    _$messageStatusAtom.context.enforceReadPolicy(_$messageStatusAtom);
+    _$messageStatusAtom.reportObserved();
+    return super.messageStatus;
+  }
+
+  @override
+  set messageStatus(String value) {
+    _$messageStatusAtom.context.conditionallyRunInAction(() {
+      super.messageStatus = value;
+      _$messageStatusAtom.reportChanged();
+    }, _$messageStatusAtom, name: '${_$messageStatusAtom.name}_set');
+  }
+
   final _$_LoginBaseActionController = ActionController(name: '_LoginBase');
 
   @override
