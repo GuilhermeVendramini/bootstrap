@@ -5,6 +5,7 @@ import 'package:bootstrap/app/shared/utils/i18n/i18n_config.dart';
 import 'package:bootstrap/app/shared/utils/snackbar/default_snackbar.dart';
 import 'package:bootstrap/app/shared/utils/validators/default_validator.dart';
 import 'package:bootstrap/app/shared/widgets/buttons/default_raised_button.dart';
+import 'package:bootstrap/app/shared/widgets/fields/default_password_form_field.dart';
 import 'package:bootstrap/app/shared/widgets/fields/default_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -52,15 +53,13 @@ class _RegisterFormState extends State<RegisterForm> {
             onChanged: _registerController.onChangeEmail,
             validator: DefaultValidator.isEmail,
           ),
-          DefaultTextFormField(
-            obscureText: true,
+          DefaultPasswordFormField(
             hintText: i18nDefault.password.i18n,
             icon: Icons.lock,
             onChanged: _registerController.onChangePassword,
             validator: DefaultValidator.password,
           ),
-          DefaultTextFormField(
-            obscureText: true,
+          DefaultPasswordFormField(
             hintText: i18nDefault.registerConfirmPassword.i18n,
             icon: Icons.lock,
             onChanged: _registerController.onChangeConfirmPassword,
