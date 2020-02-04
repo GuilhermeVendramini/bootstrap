@@ -1,4 +1,5 @@
 import 'package:bootstrap/app/shared/utils/i18n/i18n_config.dart';
+import 'package:bootstrap/app/shared/widgets/drawer/default_drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,6 +9,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(i18nDefault.home.i18n),
       ),
+      drawer: DefaultDrawer(),
       body: Column(
         children: <Widget>[],
       ),

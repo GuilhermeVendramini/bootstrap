@@ -45,4 +45,9 @@ class FirebaseUserRepository {
 
     return null;
   }
+
+  Future<Null> logoutUser() async {
+    _firebaseAuth.signOut();
+    return;
+  }
 }

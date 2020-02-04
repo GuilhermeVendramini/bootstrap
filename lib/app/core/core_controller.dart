@@ -1,3 +1,5 @@
+import 'package:bootstrap/app/repositories/firebase/firebase_user_instance.dart';
+import 'package:bootstrap/app/repositories/firebase/firebase_user_repository.dart';
 import 'package:bootstrap/app/repositories/hive/hive_user_instance.dart';
 import 'package:bootstrap/app/repositories/hive/hive_user_repository.dart';
 import 'package:bootstrap/app/shared/models/user_model.dart';
@@ -16,11 +18,11 @@ abstract class _CoreBase with Store {
   @observable
   UserLoadStatus userLoadStatus = UserLoadStatus.IDLE;
 
+  FirebaseUserRepository _userRepository = FirebaseUserInstance.repository;
   HiveUserRepository _hiveUserRepository = HiveUserInstance.repository;
 
   @action
   Future<bool> loadCurrentUser() async {
-    print('loadCurrentUser');
     if (currentUser == null) {
       try {
         userLoadStatus = UserLoadStatus.LOADING;
@@ -33,5 +35,19 @@ abstract class _CoreBase with Store {
       }
     }
     return true;
+  }
+
+  @action
+  Future<Null> logoutCurrentUser() async {
+    if (currentUser != null) {
+      try {
+        await _userRepository.logoutUser();
+        await _hiveUserRepository.deleteCurrentUser();
+        currentUser = null;
+      } catch (e) {
+        throw e;
+      }
+    }
+    return;
   }
 }
