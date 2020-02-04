@@ -18,9 +18,9 @@ class CoreModule extends MainModule {
   @override
   List<Router> get routers => [
         Router('/', child: (_, args) => CoreSplashPage(),),
-        Router('/home', module: HomeModule()),
+        Router('/home', module: HomeModule(), guards: [AuthenticatedUserGuard()]),
         Router('/login', module: LoginModule()),
-        Router('/register', module: RegisterModule(), guards: [AuthenticatedUserGuard()]),
+        Router('/register', module: RegisterModule()),
         Router('/recovery', module: RecoveryPasswordModule()),
       ];
 
