@@ -19,7 +19,9 @@ class LoginBlock extends StatelessWidget {
           DefaultFlatButton(
             text: i18nDefault.loginForgotPassword.i18n,
             buttonWidth: 160.0,
-            onPressed: () {},
+            onPressed: () {
+              Modular.to.pushNamed('/recovery');
+            },
           ),
           SizedBox(
             height: 10.0,

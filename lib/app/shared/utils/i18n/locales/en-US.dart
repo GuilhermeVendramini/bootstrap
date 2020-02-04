@@ -16,4 +16,10 @@ class I18nStrings implements I18nTranslate {
   String name = 'Name';
   String registerConfirmPassword = 'Confirm password';
   String registerNewAccount = 'Create new account';
+  String recovery = 'Recovery';
+  String submit = 'Submit';
+  String recoverySentEmailMessage = 'Password sent! Please check your mailbox.';
+  String registerPasswordHelperText = 'At least 8 characters';
+  String registerPasswordConfirmHelperText = 'Passwords must match';
+  String welcomeMessage = 'Welcome to Flutter Bootstrap';
 }

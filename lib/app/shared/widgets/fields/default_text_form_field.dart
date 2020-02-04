@@ -9,6 +9,7 @@ class DefaultTextFormField extends StatelessWidget {
   final TextInputType textInputType;
   final bool obscureText;
   final bool enabled;
+  final String helperText;
 
   DefaultTextFormField({
     @required this.hintText,
@@ -19,6 +20,7 @@ class DefaultTextFormField extends StatelessWidget {
     this.obscureText = false,
     this.enabled = true,
     this.onChanged,
+    this.helperText,
   });
 
   @override
@@ -31,6 +33,7 @@ class DefaultTextFormField extends StatelessWidget {
       keyboardType: textInputType,
       decoration: InputDecoration(
         hintText: hintText,
+        helperText: helperText,
         icon: Icon(
           icon,
           //color: Colors.grey,

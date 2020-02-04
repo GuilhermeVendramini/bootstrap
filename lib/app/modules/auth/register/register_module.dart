@@ -12,7 +12,7 @@ class RegisterModule extends ChildModule {
   @override
   List<Router> get routers => [
         Router(
-          '/register',
+          '/',
           child: (_, args) => I18n(
             child: RegisterPage(),
           ),

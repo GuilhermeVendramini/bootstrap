@@ -12,7 +12,7 @@ class HomeModule extends ChildModule {
   @override
   List<Router> get routers => [
         Router(
-          '/home',
+          '/',
           child: (_, args) => I18n(
             child: HomePage(),
           ),

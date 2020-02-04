@@ -39,7 +39,7 @@ class _CoreSplashPageState extends State<CoreSplashPage> {
                 return CircularProgressIndicator();
                 break;
               case UserLoadStatus.ERROR:
-                return Text('Error');
+                return Text(_coreController.messageStatus);
                 break;
               case UserLoadStatus.DONE:
               case UserLoadStatus.IDLE:

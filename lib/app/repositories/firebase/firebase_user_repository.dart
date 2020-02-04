@@ -46,8 +46,13 @@ class FirebaseUserRepository {
     return null;
   }
 
+  Future<Null> recoveryPassword({@required String email}) async {
+    await _firebaseAuth.sendPasswordResetEmail(email: email);
+    return;
+  }
+
   Future<Null> logoutUser() async {
-    _firebaseAuth.signOut();
+    await _firebaseAuth.signOut();
     return;
   }
 }

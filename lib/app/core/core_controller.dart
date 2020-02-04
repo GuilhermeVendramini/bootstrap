@@ -3,6 +3,7 @@ import 'package:bootstrap/app/repositories/firebase/firebase_user_repository.dar
 import 'package:bootstrap/app/repositories/hive/hive_user_instance.dart';
 import 'package:bootstrap/app/repositories/hive/hive_user_repository.dart';
 import 'package:bootstrap/app/shared/models/user_model.dart';
+import 'package:flutter/services.dart';
 import 'package:mobx/mobx.dart';
 
 part 'core_controller.g.dart';
@@ -18,6 +19,9 @@ abstract class _CoreBase with Store {
   @observable
   UserLoadStatus userLoadStatus = UserLoadStatus.IDLE;
 
+  @observable
+  String messageStatus = '';
+
   FirebaseUserRepository _userRepository = FirebaseUserInstance.repository;
   HiveUserRepository _hiveUserRepository = HiveUserInstance.repository;
 
@@ -29,9 +33,9 @@ abstract class _CoreBase with Store {
         currentUser = await _hiveUserRepository.getCurrentUser();
         userLoadStatus = UserLoadStatus.DONE;
         return true;
-      } catch (e) {
+      } on PlatformException catch (e) {
+        messageStatus = e.message;
         userLoadStatus = UserLoadStatus.ERROR;
-        throw e;
       }
     }
     return true;

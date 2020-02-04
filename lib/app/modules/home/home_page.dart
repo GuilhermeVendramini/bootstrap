@@ -10,8 +10,8 @@ class HomePage extends StatelessWidget {
         title: Text(i18nDefault.home.i18n),
       ),
       drawer: DefaultDrawer(),
-      body: Column(
-        children: <Widget>[],
+      body: Center(
+        child: Text(i18nDefault.welcomeMessage.i18n),
       ),
     );
   }

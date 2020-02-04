@@ -12,7 +12,7 @@ class LoginModule extends ChildModule {
   @override
   List<Router> get routers => [
         Router(
-          '/login',
+          '/',
           child: (_, args) => I18n(
             child: LoginPage(),
           ),

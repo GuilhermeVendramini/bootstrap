@@ -19,7 +19,8 @@ void main() {
       coreController = CoreModule.to.get<CoreController>();
     });
 
-    testWidgets('SplashPage - Redirect when user is logged or not', (WidgetTester tester) async {
+    testWidgets('SplashPage - Redirect when user is logged or not',
+        (WidgetTester tester) async {
       Finder titleFinder;
       await tester.pumpWidget(
         buildTestableWidget(CoreWidget()),

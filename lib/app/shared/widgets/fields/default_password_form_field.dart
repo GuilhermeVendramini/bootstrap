@@ -8,6 +8,7 @@ class DefaultPasswordFormField extends StatefulWidget {
   final Function onChanged;
   final TextInputType textInputType;
   final bool enabled;
+  final String helperText;
 
   DefaultPasswordFormField({
     @required this.hintText,
@@ -17,6 +18,7 @@ class DefaultPasswordFormField extends StatefulWidget {
     this.textInputType = TextInputType.multiline,
     this.enabled = true,
     this.onChanged,
+    this.helperText,
   });
 
   @override
@@ -45,6 +47,7 @@ class _DefaultPasswordFormFieldState extends State<DefaultPasswordFormField> {
           keyboardType: widget.textInputType,
           decoration: InputDecoration(
             hintText: widget.hintText,
+            helperText: widget.helperText,
             icon: Icon(
               widget.icon,
               //color: Colors.grey,

@@ -1,4 +1,3 @@
-import 'package:bootstrap/app/core/core_controller.dart';
 import 'package:bootstrap/app/modules/auth/register/register_controller.dart';
 import 'package:bootstrap/app/shared/models/user_model.dart';
 import 'package:bootstrap/app/shared/utils/i18n/i18n_config.dart';
@@ -18,13 +17,11 @@ class RegisterForm extends StatefulWidget {
 
 class _RegisterFormState extends State<RegisterForm> {
   final _formKey = GlobalKey<FormState>();
-  CoreController _coreController;
   RegisterController _registerController;
 
   void _formSubmit() async {
     UserModel user = await _registerController.registerWithEmailPassword();
     if (user != null) {
-      _coreController.currentUser = user;
       Modular.to.pushReplacementNamed('/home');
     } else {
       if (_registerController.messageStatus.isNotEmpty) {
@@ -38,7 +35,6 @@ class _RegisterFormState extends State<RegisterForm> {
 
   @override
   Widget build(BuildContext context) {
-    _coreController = Modular.get<CoreController>();
     _registerController = Modular.get<RegisterController>();
     _registerController.formKey = _formKey;
 
@@ -58,6 +54,7 @@ class _RegisterFormState extends State<RegisterForm> {
             icon: Icons.lock,
             onChanged: _registerController.onChangePassword,
             validator: DefaultValidator.password,
+            helperText: i18nDefault.registerPasswordHelperText.i18n,
           ),
           DefaultPasswordFormField(
             hintText: i18nDefault.registerConfirmPassword.i18n,
@@ -67,6 +64,7 @@ class _RegisterFormState extends State<RegisterForm> {
               return DefaultValidator.confirmPassword(
                   value, _registerController.password);
             },
+            helperText: i18nDefault.registerPasswordConfirmHelperText.i18n,
           ),
           SizedBox(
             height: 10.0,

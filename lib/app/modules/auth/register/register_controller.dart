@@ -1,8 +1,12 @@
+import 'package:bootstrap/app/core/core_controller.dart';
 import 'package:bootstrap/app/repositories/firebase/firebase_user_instance.dart';
 import 'package:bootstrap/app/repositories/firebase/firebase_user_repository.dart';
+import 'package:bootstrap/app/repositories/hive/hive_user_instance.dart';
+import 'package:bootstrap/app/repositories/hive/hive_user_repository.dart';
 import 'package:bootstrap/app/shared/models/user_model.dart';
 import 'package:bootstrap/app/shared/utils/validators/default_validator.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
 part 'register_controller.g.dart';
@@ -13,8 +17,9 @@ class RegisterController = _RegisterBase with _$RegisterController;
 
 abstract class _RegisterBase with Store {
   var formKey;
-
+  CoreController _coreController = Modular.get<CoreController>();
   FirebaseUserRepository _userRepository = FirebaseUserInstance.repository;
+  HiveUserRepository _hiveUserRepository = HiveUserInstance.repository;
   UserModel currentUser;
 
   @observable
@@ -64,6 +69,8 @@ abstract class _RegisterBase with Store {
         _form.save();
         currentUser = await _userRepository.createUserWithEmailPassword(
             email: email, password: password);
+        _coreController.currentUser = currentUser;
+        _hiveUserRepository.saveCurrentUser(user: currentUser);
         registerUserStatus = RegisterUserStatus.DONE;
         if (currentUser != null) {
           return currentUser;

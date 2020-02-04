@@ -1,3 +1,4 @@
+import 'package:bootstrap/app/core/core_controller.dart';
 import 'package:bootstrap/app/repositories/firebase/firebase_user_instance.dart';
 import 'package:bootstrap/app/repositories/firebase/firebase_user_repository.dart';
 import 'package:bootstrap/app/repositories/hive/hive_user_instance.dart';
@@ -5,6 +6,7 @@ import 'package:bootstrap/app/repositories/hive/hive_user_repository.dart';
 import 'package:bootstrap/app/shared/models/user_model.dart';
 import 'package:bootstrap/app/shared/utils/validators/default_validator.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
 part 'login_controller.g.dart';
@@ -15,6 +17,7 @@ class LoginController = _LoginBase with _$LoginController;
 
 abstract class _LoginBase with Store {
   var formKey;
+  CoreController _coreController = Modular.get<CoreController>();
   FirebaseUserRepository _userRepository = FirebaseUserInstance.repository;
   HiveUserRepository _hiveUserRepository = HiveUserInstance.repository;
   UserModel currentUser;
@@ -59,6 +62,7 @@ abstract class _LoginBase with Store {
 
         if (currentUser != null) {
           _hiveUserRepository.saveCurrentUser(user: currentUser);
+          _coreController.currentUser = currentUser;
           return currentUser;
         }
 

@@ -49,4 +49,11 @@ mixin _$CoreController on _CoreBase, Store {
   Future<bool> loadCurrentUser() {
     return _$loadCurrentUserAsyncAction.run(() => super.loadCurrentUser());
   }
+
+  final _$logoutCurrentUserAsyncAction = AsyncAction('logoutCurrentUser');
+
+  @override
+  Future<Null> logoutCurrentUser() {
+    return _$logoutCurrentUserAsyncAction.run(() => super.logoutCurrentUser());
+  }
 }

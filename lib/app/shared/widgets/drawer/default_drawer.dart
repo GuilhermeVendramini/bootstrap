@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class DefaultDrawer extends StatefulWidget {
-
   @override
   _DefaultDrawerState createState() => _DefaultDrawerState();
 }
