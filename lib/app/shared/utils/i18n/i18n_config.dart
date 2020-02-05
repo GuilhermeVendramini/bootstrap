@@ -92,6 +92,14 @@ extension Localization on String {
       {
         "en_us": _i18nEnUS.welcomeMessage,
         "pt_br": _i18nPtBR.welcomeMessage,
+      } +
+      {
+        "en_us": _i18nEnUS.notFoundPage,
+        "pt_br": _i18nPtBR.notFoundPage,
+      } +
+      {
+        "en_us": _i18nEnUS.notFoundMessage,
+        "pt_br": _i18nPtBR.notFoundMessage,
       };
 
   String get i18n => localize(this, t);

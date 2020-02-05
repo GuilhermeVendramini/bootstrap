@@ -2,6 +2,7 @@ abstract class I18nTranslate {
   /*
   * Generic
   * */
+
   String appName;
   String home;
   String login;
@@ -25,12 +26,14 @@ abstract class I18nTranslate {
   /*
   * Login
   * */
+
   String loginForgotPassword;
   String loginSignUp;
 
   /*
   * Register
   * */
+
   String registerConfirmPassword;
   String registerNewAccount;
   String registerPasswordHelperText;
@@ -39,5 +42,13 @@ abstract class I18nTranslate {
   /*
   * Register
   * */
+
   String recoverySentEmailMessage;
+
+  /*
+  * Not Found Page
+  * */
+
+  String notFoundPage;
+  String notFoundMessage;
 }

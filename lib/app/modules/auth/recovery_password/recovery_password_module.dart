@@ -1,6 +1,7 @@
 import 'package:bootstrap/app/modules/auth/recovery_password/recovery_password_controller.dart';
 import 'package:bootstrap/app/modules/auth/recovery_password/recovery_password_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:i18n_extension/i18n_widget.dart';
 
 class RecoveryPasswordModule extends ChildModule {
   @override
@@ -10,7 +11,12 @@ class RecoveryPasswordModule extends ChildModule {
 
   @override
   List<Router> get routers => [
-        Router('/', child: (_, args) => RecoveryPasswordPage()),
+        Router(
+          '/',
+          child: (_, args) => I18n(
+            child: RecoveryPasswordPage(),
+          ),
+        ),
       ];
 
   static Inject get to => Inject<RecoveryPasswordModule>.of();

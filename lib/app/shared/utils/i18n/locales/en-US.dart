@@ -22,4 +22,7 @@ class I18nStrings implements I18nTranslate {
   String registerPasswordHelperText = 'At least 8 characters';
   String registerPasswordConfirmHelperText = 'Passwords must match';
   String welcomeMessage = 'Welcome to Flutter Bootstrap';
+  String notFoundPage = 'Page not found';
+  String notFoundMessage =
+      'Page not found or you don\'t have the necessary credentials.';
 }
