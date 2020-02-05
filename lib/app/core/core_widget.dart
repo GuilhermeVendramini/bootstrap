@@ -1,4 +1,5 @@
 import 'package:bootstrap/app/core/themes/core_theme.dart';
+import 'package:bootstrap/app/core/widgets/pages/splash/core_splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -21,6 +22,11 @@ class CoreWidget extends StatelessWidget {
       initialRoute: '/',
       onGenerateRoute: Modular.generateRoute,
       navigatorKey: Modular.navigatorKey,
+      onUnknownRoute: (RouteSettings setting) {
+        return MaterialPageRoute(
+          builder: (context) => CoreSplashPage(),
+        );
+      },
     );
   }
 }
