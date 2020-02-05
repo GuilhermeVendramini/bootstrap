@@ -1,16 +1,27 @@
-# bootstrap
+# Flutter Bootstrap
 
-A new Flutter project.
+Flutter Bootstrap is a design structure based on [Flutter Modular](https://pub.dev/packages/flutter_modular).
 
-## Getting Started
+# Packages
 
-This project is a starting point for a Flutter application.
+  - [mobx](https://pub.dev/packages/mobx)
+  - [dio](https://pub.dev/packages/dio)
+  - [i18n_extension](https://pub.dev/packages/i18n_extension)
+  - [hive](https://pub.dev/packages/hive)
+  - [path_provider](https://pub.dev/packages/path_provider)
+  - [flutter_modular](https://pub.dev/packages/flutter_modular)
 
-A few resources to get you started if this is your first Flutter project:
+# Features
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+  - Translation and Internationalization (i18n_extension)
+  - Local storage (hive)
+  - Decoupled state management (mobx)
+  - Unit and Widget (UI) tests
+  - Forms Validations
+  - Basic decoupled components: Fields, Snackbar, Drawer, Buttons, etc.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# How it works
+
+You can add, change or remove packages if necessary. Keep package versions always up to date.
+
+Bootstrap Flutter starts with a login system using Firebase. To work, configure Firebase in your local project adding google-services.json and enable Email / Password authentication in your Firebase authentication method settings.
