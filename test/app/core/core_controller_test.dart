@@ -41,7 +41,7 @@ void main() {
   setUp(() {
     coreController = CoreModule.to.get<CoreController>();
     setMockPathProviderPlatform(FakePlatform(operatingSystem: 'android'));
-    response = 'directory/test';
+    response = 'test/mock/hive/currentuserbox';
     currentUser = UserModel(name: 'Name', id: 'id', email: 'test@email.com');
   });
 
