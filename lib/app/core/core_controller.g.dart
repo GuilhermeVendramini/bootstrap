@@ -63,7 +63,7 @@ mixin _$CoreController on _CoreBase, Store {
   final _$loadCurrentUserAsyncAction = AsyncAction('loadCurrentUser');
 
   @override
-  Future<bool> loadCurrentUser() {
+  Future<Null> loadCurrentUser() {
     return _$loadCurrentUserAsyncAction.run(() => super.loadCurrentUser());
   }
 

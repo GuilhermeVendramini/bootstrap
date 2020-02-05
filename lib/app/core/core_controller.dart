@@ -26,19 +26,18 @@ abstract class _CoreBase with Store {
   HiveUserRepository _hiveUserRepository = HiveUserInstance.repository;
 
   @action
-  Future<bool> loadCurrentUser() async {
+  Future<Null> loadCurrentUser() async {
     if (currentUser == null) {
       try {
         userLoadStatus = UserLoadStatus.LOADING;
         currentUser = await _hiveUserRepository.getCurrentUser();
         userLoadStatus = UserLoadStatus.DONE;
-        return true;
       } on PlatformException catch (e) {
         messageStatus = e.message;
         userLoadStatus = UserLoadStatus.ERROR;
       }
     }
-    return true;
+    return;
   }
 
   @action
