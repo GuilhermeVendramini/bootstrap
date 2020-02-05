@@ -13,13 +13,7 @@ void main() {
   });
 
   group("[GROUP]: CoreWidget", () {
-    CoreController coreController;
-
-    setUp(() {
-      coreController = CoreModule.to.get<CoreController>();
-    });
-
-    testWidgets('SplashPage - Redirect when user is logged or not',
+    testWidgets('SplashPage',
         (WidgetTester tester) async {
       Finder titleFinder;
       await tester.pumpWidget(
@@ -28,15 +22,6 @@ void main() {
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
       await tester.pump(Duration(seconds: 3));
       titleFinder = find.text(i18nDefault.appName.i18n);
-      expect(titleFinder, findsNWidgets(2));
-      await tester.pump();
-
-      if (coreController.currentUser != null) {
-        titleFinder = find.text(i18nDefault.home.i18n);
-      } else {
-        titleFinder = find.text(i18nDefault.login.i18n);
-      }
-
       expect(titleFinder, findsOneWidget);
     });
   });
