@@ -1,4 +1,3 @@
-import 'package:bootstrap/app/core/core_controller.dart';
 import 'package:bootstrap/app/core/core_module.dart';
 import 'package:bootstrap/app/core/core_widget.dart';
 import 'package:bootstrap/app/shared/utils/i18n/i18n_config.dart';
