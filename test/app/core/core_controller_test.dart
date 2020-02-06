@@ -32,11 +32,11 @@ void main() {
     throw MissingPluginException();
   });
 
-  initModule(CoreModule());
   CoreController coreController;
   UserModel currentUser;
 
   setUp(() {
+    initModule(CoreModule());
     coreController = CoreModule.to.get<CoreController>();
     setMockPathProviderPlatform(FakePlatform(operatingSystem: 'android'));
     response = 'test/mock/hive/currentuserbox';

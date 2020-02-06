@@ -2,7 +2,7 @@ import 'package:bootstrap/app/shared/utils/i18n/i18n_config.dart';
 import 'package:flutter/material.dart';
 import 'package:i18n_extension/i18n_widget.dart';
 
-class NotFoundPage extends StatelessWidget {
+class CoreNotFoundPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return I18n(
