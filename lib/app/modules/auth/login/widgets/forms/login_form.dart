@@ -16,19 +16,23 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  final _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   LoginController _loginController;
 
   void _formSubmit() async {
-    UserModel user = await _loginController.loginWithEmailPassword();
-    if (user != null) {
-      Modular.to.pushReplacementNamed('/home');
-    } else {
-      if (_loginController.messageStatus.isNotEmpty) {
-        DefaultSnackBar.BuildSnackBar(
-          context: context,
-          content: _loginController.messageStatus,
-        );
+    final _form = _formKey.currentState;
+    if (_form.validate()) {
+      _form.save();
+      UserModel user = await _loginController.loginWithEmailPassword();
+      if (user != null) {
+        Modular.to.pushReplacementNamed('/home');
+      } else {
+        if (_loginController.messageStatus.isNotEmpty) {
+          DefaultSnackBar.BuildSnackBar(
+            context: context,
+            content: _loginController.messageStatus,
+          );
+        }
       }
     }
   }
@@ -36,7 +40,6 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     _loginController = Modular.get<LoginController>();
-    _loginController.formKey = _formKey;
 
     return Form(
       key: _formKey,

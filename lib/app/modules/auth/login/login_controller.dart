@@ -16,7 +16,6 @@ enum SignInUserStatus { IDLE, LOADING, DONE, ERROR }
 class LoginController = _LoginBase with _$LoginController;
 
 abstract class _LoginBase with Store {
-  var formKey;
   CoreController _coreController = Modular.get<CoreController>();
   FirebaseUserRepository _userRepository = FirebaseUserInstance.repository;
   HiveUserRepository _hiveUserRepository = HiveUserInstance.repository;
@@ -53,21 +52,17 @@ abstract class _LoginBase with Store {
 
   Future<UserModel> loginWithEmailPassword() async {
     try {
-      final _form = formKey.currentState;
-      if (_form.validate()) {
-        signInUserStatus = SignInUserStatus.LOADING;
-        _form.save();
-        currentUser = await _userRepository.signInWithEmailPassword(
-            email: email, password: password);
+      signInUserStatus = SignInUserStatus.LOADING;
+      currentUser = await _userRepository.signInWithEmailPassword(
+          email: email, password: password);
 
-        if (currentUser != null) {
-          _hiveUserRepository.saveCurrentUser(user: currentUser);
-          _coreController.currentUser = currentUser;
-          return currentUser;
-        }
-
-        signInUserStatus = SignInUserStatus.DONE;
+      if (currentUser != null) {
+        _hiveUserRepository.saveCurrentUser(user: currentUser);
+        _coreController.currentUser = currentUser;
+        return currentUser;
       }
+
+      signInUserStatus = SignInUserStatus.DONE;
     } on PlatformException catch (e) {
       messageStatus = e.message;
       signInUserStatus = SignInUserStatus.ERROR;

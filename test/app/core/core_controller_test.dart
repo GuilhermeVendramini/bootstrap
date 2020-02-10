@@ -13,7 +13,6 @@ void main() {
   /*
   * Path Provider Method Mock
   * */
-
   dynamic response;
   const MethodChannel path_provider = MethodChannel(
       'plugins.flutter.io/path_provider');
@@ -24,7 +23,6 @@ void main() {
   /*
   * Firebase Auth Method Mock
   * */
-
   const firebase_auth = MethodChannel('plugins.flutter.io/firebase_auth');
   firebase_auth.setMockMethodCallHandler((MethodCall call) async {
     if (call.method == 'signOut')
