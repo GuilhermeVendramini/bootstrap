@@ -14,8 +14,8 @@ void main() {
   * Path Provider Method Mock
   * */
   dynamic response;
-  const MethodChannel path_provider = MethodChannel(
-      'plugins.flutter.io/path_provider');
+  const MethodChannel path_provider =
+      MethodChannel('plugins.flutter.io/path_provider');
   path_provider.setMockMethodCallHandler((MethodCall methodCall) async {
     return response;
   });
@@ -25,8 +25,7 @@ void main() {
   * */
   const firebase_auth = MethodChannel('plugins.flutter.io/firebase_auth');
   firebase_auth.setMockMethodCallHandler((MethodCall call) async {
-    if (call.method == 'signOut')
-      return true;
+    if (call.method == 'signOut') return true;
     throw MissingPluginException();
   });
 

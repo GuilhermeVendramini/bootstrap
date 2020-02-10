@@ -12,8 +12,7 @@ void main() {
   });
 
   group("[GROUP]: CoreWidget", () {
-    testWidgets('SplashPage',
-        (WidgetTester tester) async {
+    testWidgets('SplashPage', (WidgetTester tester) async {
       Finder titleFinder;
       await tester.pumpWidget(
         buildTestableWidget(CoreWidget()),
